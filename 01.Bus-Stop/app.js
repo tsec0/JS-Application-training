@@ -12,8 +12,8 @@ async function getInfo() {
     stopId.vallue = "";
 
     try {
-        const response = await fetch(url) // we receive promise
-        const data = await response.json() // we receive promise
+        const response = await fetch(url) // we receive promise and we should await
+        const data = await response.json() // we receive promise and we should await
 
         stopNameElement.textContent = data.name;
 

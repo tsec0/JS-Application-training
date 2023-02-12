@@ -1,3 +1,4 @@
+// for promises we use async
 async function getInfo() {
     // console.log("TODO...");
     const stopInfoElement = document.getElementById("stopId");
@@ -15,6 +16,8 @@ async function getInfo() {
         const data = await response.json() // we receive promise
 
         stopNameElement.textContent = data.name;
+
+        //Object.entries() -> returns an array with key,value pairs
         Object.entries(data.buses).forEach(([busNumber_key, time_value]) => {
             const li = document.createElement("li");
             li.textContent = `Bus ${busNumber_key} arrives in ${time_value} minutes`

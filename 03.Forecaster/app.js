@@ -12,58 +12,53 @@ function attachEvents() {
 }
 
 async function getWeather() {
-    const url = "http://localhost:3030/jsonstore/forecaster/locations";
-    const townName = document.getElementById("location").value;
+    const currentSection = document.getElementById("current");
+    const upcomingContainer = document.getElementById("upcoming");
+    const forecastContainer = document.getElementById("forecast");
 
     try {
+        const townName = document.getElementById("location").value;
+
+        const url = "http://localhost:3030/jsonstore/forecaster/locations";
         const response = await fetch(url);
         const data = await response.json();
 
         const info = data.find(town => town.name === townName);
 
-        if(!info){
-            return 
-        }
-        createForecaster(info.code);
-    } catch (error) {
-        forecastContainer.textContent = "Error";
-        forecastContainer.style.display = 'block';
-    }
-}
-
-async function createForecaster(code) {
-    const currentSection = document.getElementById("current");
-    const forecastContainer = document.getElementById("forecast");
-    const upcomingContainer = document.getElementById("upcoming");
-    // const forecastSection = document.querySelector("#forecast");
-
-    const urlToday = `http://localhost:3030/jsonstore/forecaster/today/${code}`;
-    const urlUpcoming = `http://localhost:3030/jsonstore/forecaster/upcoming/${code}`;
-
-    //TODO use promise.all
-    try {
-        cosnt [responseToday, responseUpcoming] = Promise.all([
-            fetch(urlToday),
-            fetch(urlUpcoming)
+        // await Promise.all([]) -> await was missed!!!
+        const [todayData, upcomingData] = await Promise.all([
+            getToday(info.code),
+            getUpcoming(info.code)
         ]);
+        // console.log(todayData, upcomingData);
 
-        // const responseToday = await fetch(urlToday);
-        const dataToday = await responseToday.json();
-
-        // const responseUpcoming = await fetch(urlUpcoming);
-        const dataUpcoming = await responseUpcoming.json();
-
-        const todayHTMLTemp = createToday(dataToday);
+        const todayHTMLTemp = createToday(todayData);
         currentSection.appendChild(todayHTMLTemp);
 
-        const upcomingHTMLTemp = createUpcoming(dataUpcoming);
+        const upcomingHTMLTemp = createUpcoming(upcomingData);
         upcomingContainer.appendChild(upcomingHTMLTemp);
 
         forecastContainer.style.display = 'block';
-    } catch (error) {
-        forecastContainer.textContent = "Error";
+    } catch (e) {
         forecastContainer.style.display = 'block';
+        document.querySelector(".label").textContent = "Error";
     }
+}
+
+async function getToday(code) {
+    const urlToday = `http://localhost:3030/jsonstore/forecaster/today/${code}`;
+    const responseToday = await fetch(urlToday);
+    const dataToday = await responseToday.json();
+    // console.log(dataToday);
+    return dataToday;
+}
+
+async function getUpcoming(code) {
+    const urlUpcoming = `http://localhost:3030/jsonstore/forecaster/upcoming/${code}`;
+    const responseUpcoming = await fetch(urlUpcoming);
+    const dataUpcoming = await responseUpcoming.json();
+    // console.log(dataUpcoming);
+    return dataUpcoming;
 }
 
 function createToday(data) {
@@ -100,6 +95,7 @@ function createToday(data) {
     conditionContainer.appendChild(condIconSpan);
     conditionContainer.appendChild(conditionSpan);
 
+    // console.log(conditionContainer);
     return conditionContainer;
 }
 
@@ -112,6 +108,7 @@ function createUpcoming(data) {
         containerUpcoming.appendChild(spanHolder)
     });
 
+    // console.log(containerUpcoming);
     return containerUpcoming;
 }
 

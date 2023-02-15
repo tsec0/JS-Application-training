@@ -32,8 +32,15 @@ function displayComments(comments){
 }
 
 function createCommentCard(comment){
+    const userId = sessionStorage.getItem('userId');
+
     const element = document.createElement('article');
-    element.innerHTML = `<header><h3>${comment.name}</h3></header><main><p>${comment.content}</p><button>Delete</button></main>`;
+    element.innerHTML = `<header><h3>${comment.name}</h3></header><main><p>${comment.content}</p>`;
+    
+    if(comment._ownerId == userId){
+        element.innerHTML += `<button>Delete</button></main>`;
+    }
+    
     element.id = comment._id;
 
     return element;

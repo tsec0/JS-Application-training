@@ -13,11 +13,13 @@ async function onLogin(event){
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({email, password})
+        body: JSON.stringify({ email, password })
     });
 
     const data = await response.json();
     sessionStorage.setItem('accessToken', data.accessToken);
+    sessionStorage.setItem('userId', data._id);
+    window.location = '/';
 }
 
 async function onLogout(){

@@ -13,11 +13,10 @@ async function getComments(e){
     postCommentsElement.innerHTML = ""; // this is a bit of a XSS problem
 
     const postUrl = "http://localhost:3030/jsonstore/blog/posts";
-    const commentsUrl = "http://localhost:3030/jsonstore/blog/comments";
-
     const postResponse = await fetch(postUrl);
     const postData = await postResponse.json();
 
+    const commentsUrl = "http://localhost:3030/jsonstore/blog/comments";
     const commentsResponse = await fetch(commentsUrl);
     const commentsData = await commentsResponse.json();
 

@@ -22,7 +22,7 @@ async function onPost(event){
 
     const {name, content} = Object.fromEntries(formData.entries());
 
-    const result = await postComment({name, content});
+    const result = await postComment({content});
     list.prepend(createCommentCard(result));
 }
 
@@ -40,7 +40,7 @@ function createCommentCard(comment){
 }
 
 async function getComments(){
-    const response = await fetch("http://localhost:3030/jsonstore/comments");
+    const response = await fetch("http://localhost:3030/data/comments");
     const data = await response.json();
 
     const comments = Object.values(data).reverse();
@@ -48,10 +48,13 @@ async function getComments(){
 }
 
 async function postComment(comment){
+    const token = sessionStorage.getItem('accessToken');
+
     const response = await fetch("http://localhost:3030/jsonstore/comments", {
         method: "post",
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'X-Authorisation': token,
         },
         body: JSON.stringify(comment)
     });
@@ -73,8 +76,14 @@ function onCommentClick(ev){
 }
 
 async function deleteComment(id){
-    const response = await fetch('http://localhost:3030/jsonstore/comments/' + id, {
+    const token = sessionStorage.getItem('accessToken');
+
+    await fetch('http://localhost:3030/data/comments/' + id, {
         method: 'delete',
+        headers: {
+            'X-Authorisation': token,
+        },
+
     });
     document.getElementById(id).remove();
 }

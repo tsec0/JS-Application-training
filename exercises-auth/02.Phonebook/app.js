@@ -15,7 +15,6 @@ function handleCreateRecord(){
     onLoadAllRecords();
 }
 
-
 // first - first we render the data
 function renderRecord(data){
     const ul = document.getElementById('phonebook');

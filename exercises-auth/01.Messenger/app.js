@@ -12,7 +12,7 @@ function renderMsg(data){
 }
 
 function onSendMessage(){
-    const author = document.querySelector("input[name='author'");
+    const author = document.querySelector("input[name='author']");
     const content = document.querySelector("input[name='content']");
 
     if(author.value != '' && content.value != ''){
@@ -44,7 +44,7 @@ async function createMsg(body){ // {author, content}
         body: JSON.stringify(body),// {author, content}
     });
 
-    // const data = await response.json();
+    const data = await response.json();
     // return data;
     getAllMsg();
 }

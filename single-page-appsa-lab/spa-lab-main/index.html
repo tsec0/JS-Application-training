@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPA MAIN DEMO</title>
+    <!-- type="module" to have import / export functions and vars -->
+    <script src="./src/app.js" type="module"></script>
+    <style>
+        section {
+            display: none;
+            padding: 16px 32px;
+            border: gold dashed 1em;
+            background-color: antiquewhite;
+        }
+
+        nav {
+            border: red inset 1ch;
+            background-color: rgb(255, 208, 229);
+            padding: 8px 16px;
+            text-align: center;
+            font-size: large;
+        }
+
+        #catalog-view{
+            background-color: rgb(171, 230, 251);
+        }
+
+        #details-view{
+            background-color: rgb(158, 248, 194);
+        }
+        #login-view{
+            background-color: rgb(247, 248, 158);
+        }
+
+        #register-view{
+            background-color: rgb(247, 171, 152);
+        }
+
+        label {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <h1>SPA DEMO</h1>
+
+    <nav>
+        <a id='catalog-link' href="javascript:void(0)">Catalog</a>
+        <a id='login-link' href="javascript:void(0)">Login</a>
+        <a href="javascript:void(0)">Register</a>
+    </nav>
+
+    <section id="catalog-view">
+        <h2> All Recipes</h2>
+
+        <ul id="recipe-list">
+            <li>First recipe</li>
+            <li>Second recipe</li>
+        </ul>
+    
+    </section>
+
+    <section id="details-view">
+        <h2 id="recipe-name">Recipe Details</h2>
+
+        <p>Ingredients</p>
+        <ul id="recipe-ingredients"></ul>
+
+        <p>Preparation steps</p>
+        <ul id="recipe-steps"></ul>
+    </section>
+
+    <section id="login-view">
+        <h2>Login</h2>
+        <form id="login-form">
+            <label>Email: <input type="text" name="email"></label>
+            <label>Password: <input type="password" name="password"></label>
+            <button>Login</button>
+        </form>
+    </section>
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+section {
+    display: none;
+    padding: 16px 32px;
+    border: gold dashed 1em;
+    background-color: antiquewhite;
+}
+
+nav {
+    border: red inset 1ch;
+    background-color: rgb(255, 208, 229);
+    padding: 8px 16px;
+    text-align: center;
+    font-size: large;
+}
+
+#catalog-view{
+    background-color: rgb(171, 230, 251);
+}
+
+#details-view{
+    background-color: rgb(158, 248, 194);
+}
+#login-view{
+    background-color: rgb(247, 248, 158);
+}
+
+#register-view{
+    background-color: rgb(247, 171, 152);
+}
+
+label {
+    display: block;
+}
+.user,
+.guest {
+    display: none;
+}
+
+h1 {
+    text-align: center;
+    text-decoration-line: underline overline;
+    text-decoration-style: double;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 3em;
+    border:black inset 3px;
+    border-radius: 5%;
+    padding: 15px;
+    padding-top: 20px;
+}

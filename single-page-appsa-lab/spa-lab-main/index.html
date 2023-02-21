@@ -7,50 +7,18 @@
     <title>SPA MAIN DEMO</title>
     <!-- type="module" to have import / export functions and vars -->
     <script src="./src/app.js" type="module"></script>
-    <style>
-        section {
-            display: none;
-            padding: 16px 32px;
-            border: gold dashed 1em;
-            background-color: antiquewhite;
-        }
-
-        nav {
-            border: red inset 1ch;
-            background-color: rgb(255, 208, 229);
-            padding: 8px 16px;
-            text-align: center;
-            font-size: large;
-        }
-
-        #catalog-view{
-            background-color: rgb(171, 230, 251);
-        }
-
-        #details-view{
-            background-color: rgb(158, 248, 194);
-        }
-        #login-view{
-            background-color: rgb(247, 248, 158);
-        }
-
-        #register-view{
-            background-color: rgb(247, 171, 152);
-        }
-
-        label {
-            display: block;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="./index.css" >
 </head>
 <body>
     <h1>SPA DEMO</h1>
 
     <nav>
         <a id='catalog-link' href="javascript:void(0)">Catalog</a>
-        <a id='login-link' href="javascript:void(0)">Login</a>
-        <a href="javascript:void(0)">Register</a>
-    </nav>
+        <a class='guest' id='login-link' href="javascript:void(0)">Login</a>
+        <a class='guest' id='register-link' href="javascript:void(0)">Register</a>
+        <span class="user" id="welcome-msg"></span>
+        <a class='user' id='logout-link' href="javascript:void(0)">Logout</a>
+    </nav>  
 
     <section id="catalog-view">
         <h2> All Recipes</h2>

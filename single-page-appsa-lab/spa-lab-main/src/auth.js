@@ -1,3 +1,4 @@
+import { get } from "./api.js";
 import { showCatalogView } from "./catalog.js";
 
 export function checkUserNav() {
@@ -12,39 +13,9 @@ export function checkUserNav() {
     }
 }
 
-document.getElementById('logout-link').addEventListener('click', onLogout);
+export function onLogout() {
+    get('/users/logout');
 
-async function onLogout(event) {
-    event.preventDefault();
-
-    const token = sessionStorage.getItem('accessToken');
-
-    const url_logout = 'http://localhost:3030/users/logout';
-
-    const request_logout = {
-        method: 'get',
-        headers: {
-            'X-Authorization': token,
-        },
-    }
-
-    try {
-        const response = await fetch(url_logout, request_logout);
-
-        if (response.ok == false) {
-            const error = await response.json();
-            throw new Error(error.message);
-        }
-
-    } catch (error) {
-
-        alert(error.message);
-
-    } finally {
-        sessionStorage.removeItem('userID');
-        sessionStorage.removeItem('username');
-        sessionStorage.removeItem('accessToken');
-        checkUserNav();
-        showCatalogView();
-    }
+    checkUserNav();
+    showCatalogView();
 }

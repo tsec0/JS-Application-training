@@ -1,28 +1,24 @@
 // 1. get data from REST service
 // 2. parse and display each recipe
 
+import { get } from "./api.js";
 import { showDetailsView } from "./details.js";
 
 document.getElementById('recipe-list').addEventListener('click', openRecipe);
-document.getElementById('catalog-link').addEventListener('click', showCatalogView);
+const section = document.getElementById('catalog-view');
+section.remove();
 
 export async function showCatalogView(){
-    [...document.querySelectorAll('section')].forEach(sec => sec.style.display = 'none');
 
     const recipes = await getAllRecipes();
 
-    document.getElementById('catalog-view').style.display = 'block';
+    document.querySelector('main').appendChild(section);
 
     displayRecipes(recipes);
 }
 
 async function getAllRecipes(){
-    const response = await fetch(
-        'http://localhost:3030/data/recipes?select=' +
-        encodeURIComponent('_id,name')
-    );
-    const recipes = await response.json(); // data
-
+    const recipes = await get('/data/recipes?select=' + encodeURIComponent('_id,name'));
     return recipes;
 }
 

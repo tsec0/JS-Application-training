@@ -1,5 +1,5 @@
 section {
-    display: none;
+    /* display: none; */
     padding: 16px 32px;
     border: gold dashed 1em;
     background-color: antiquewhite;
@@ -13,24 +13,26 @@ nav {
     font-size: large;
 }
 
-#catalog-view{
+#catalog-view {
     background-color: rgb(171, 230, 251);
 }
 
-#details-view{
+#details-view {
     background-color: rgb(158, 248, 194);
 }
-#login-view{
+
+#login-view {
     background-color: rgb(247, 248, 158);
 }
 
-#register-view{
+#register-view {
     background-color: rgb(247, 171, 152);
 }
 
 label {
     display: block;
 }
+
 .user,
 .guest {
     display: none;
@@ -42,8 +44,37 @@ h1 {
     text-decoration-style: double;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 3em;
-    border:black inset 3px;
+    border: black inset 3px;
     border-radius: 5%;
     padding: 15px;
     padding-top: 20px;
+}
+
+label {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    text-align: right;
+    width: 400px;
+    line-height: 26px;
+    margin-bottom: 10px;
+}
+
+input {
+    height: 20px;
+    flex: 0 0 200px;
+    margin-left: 10px;
+}
+
+button {
+    text-align: center;
+    padding: 12px 28px;
+    border-radius: 8px;
+    border: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 3%;
+    margin-left: 40%;
+    margin-bottom: 2%;
+    width: 20%;
 }

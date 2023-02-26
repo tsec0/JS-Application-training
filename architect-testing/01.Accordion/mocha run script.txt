@@ -1,0 +1,1 @@
+powershell -executionpolicy ByPass -File C:\Users\Developer\AppData\Roaming\npm\mocha.ps1

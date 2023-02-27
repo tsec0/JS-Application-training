@@ -13,6 +13,7 @@
     <h1>SPA DEMO</h1>
     <nav>
         <a id='home-link' href="javascript:void(0)">Home</a>
+        <a class='user' id='create-link' href="javascript:void(0)">Create Recipe</a>
         <a id='catalog-link' href="javascript:void(0)">Catalog</a>
         <a class='guest' id='login-link' href="javascript:void(0)">Login</a>
         <a class='guest' id='register-link' href="javascript:void(0)">Register</a>
@@ -61,8 +62,19 @@
             <label>Email: <input type="text" name="email"></label>
             <label>Username: <input type="text" name="username"></label>
             <label>Password: <input type="password" name="password"></label>
-            <label>Re-Password: <input type="password" name="repassword"></label>
+            <label>Re-Password: <input type="password" name="repass"></label>
             <button>Register</button>
+        </form>
+    </section>
+
+    <section id="create-view">
+        <h2>Create Recipe</h2>
+        <form id="create-form">
+            <label>Recipe: <input type="text" name="name"></label>
+            <label>Image: <input type="image" name="img"></label>
+            <label>Ingredients: <textarea name="ingredients"></textarea></label>
+            <label>Steps: <textarea name="steps"></textarea></label>
+            <button>Publish</button>
         </form>
     </section>
 

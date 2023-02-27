@@ -1,5 +1,5 @@
 import { get } from "./api.js";
-import { showCatalogView } from "./catalog.js";
+import { clearUserData } from "./util.js";
 
 export function checkUserNav() {
     const username = sessionStorage.getItem('username');
@@ -13,9 +13,9 @@ export function checkUserNav() {
     }
 }
 
-export function onLogout() {
+export function onLogout(context) {
     get('/users/logout');
-
-    checkUserNav();
-    showCatalogView();
+    clearUserData();
+    context.checkUserNav();
+    context.goto('catalog-link');
 }

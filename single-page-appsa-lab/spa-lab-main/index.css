@@ -29,6 +29,10 @@ nav {
     background-color: rgb(247, 171, 152);
 }
 
+#create-view {
+    background-color: rgb(191, 244, 117);
+}
+
 label {
     display: block;
 }

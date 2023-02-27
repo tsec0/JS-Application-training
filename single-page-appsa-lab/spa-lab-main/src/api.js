@@ -1,15 +1,15 @@
 const host = 'http://localhost:3030';
 
-async function request(method, url, user_data) {
+async function request(method, url, data) {
 
-    const options = {
+    let options = {
         method,
         headers: {},
     };
 
-    if(user_data !== undefined){
+    if(data !== undefined){
         options.headers['Content-Type'] = 'application/json';
-        options.body = JSON.stringify({ user_data });
+        options.body = JSON.stringify(data); // data is never used as { data } !!!
     }
 
     const token = sessionStorage.getItem('accessToken');
@@ -19,7 +19,7 @@ async function request(method, url, user_data) {
 
     try {
         const response = await fetch(host + url, options);
-        if (response.ok !== true) {
+        if (response.ok != true) {
             const error = await response.json();
             throw new Error(error.message);
         }
@@ -29,6 +29,7 @@ async function request(method, url, user_data) {
         }
 
         return response.json();
+
     } catch(error) {
         alert(error.message);
         throw error;

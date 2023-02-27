@@ -2,17 +2,19 @@
 // 2. parse and display each recipe
 
 import { get } from "./api.js";
-import { showDetailsView } from "./details.js";
 
 document.getElementById('recipe-list').addEventListener('click', openRecipe);
 const section = document.getElementById('catalog-view');
 section.remove();
 
-export async function showCatalogView(){
+let context = null;
+
+export async function showCatalogView(inContext){
+    context = inContext;
+    context.render(section);
+    displayRecipes([]);
 
     const recipes = await getAllRecipes();
-
-    document.querySelector('main').appendChild(section);
 
     displayRecipes(recipes);
 }
@@ -51,7 +53,7 @@ function openRecipe(event){
     if(event.target.tagName == 'A'){
         event.preventDefault();
         const id = event.target.id;
-        console.log(id);
-        showDetailsView(id);
+        // showDetailsView(id);
+        context.goto('details-link', id);
     }
 }

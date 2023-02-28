@@ -1,6 +1,7 @@
 //@ts-check
 const { chromium } = require('playwright-chromium');
 const { expect } = require('chai');
+import 'mocha';
 
 const host = 'http://localhost:3000'; // Application host (NOT service host - that can be anything)
 const DEBUG = false;

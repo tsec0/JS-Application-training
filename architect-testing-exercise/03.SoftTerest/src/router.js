@@ -20,7 +20,6 @@ export function initialize (links){
             target = target.parentElement;
         }
         if(target.tagName === "A"){
-            // debugger;
             const url = new URL(target.href);
             goTo(url.pathname);
         }

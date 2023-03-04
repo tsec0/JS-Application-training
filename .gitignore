@@ -4379,3 +4379,16 @@ architect-testing-exercise/03.SoftTerest/node_modules/whatwg-encoding/lib/whatwg
 architect-testing-exercise/03.SoftTerest/node_modules/whatwg-encoding/LICENSE.txt
 architect-testing-exercise/03.SoftTerest/node_modules/whatwg-encoding/package.json
 architect-testing-exercise/03.SoftTerest/node_modules/whatwg-encoding/README.md
+architect-testing-exercise/03.SoftTerest/node_modules/.bin/babel
+architect-testing-exercise/03.SoftTerest/node_modules/.bin/babel-external-helpers
+architect-testing-exercise/03.SoftTerest/node_modules/.bin/babel-external-helpers.cmd
+architect-testing-exercise/03.SoftTerest/node_modules/.bin/babel-external-helpers.ps1
+architect-testing-exercise/03.SoftTerest/node_modules/.bin/babel-node
+architect-testing-exercise/03.SoftTerest/node_modules/.bin/babel-node.cmd
+architect-testing-exercise/03.SoftTerest/node_modules/.bin/babel-node.ps1
+architect-testing-exercise/03.SoftTerest/node_modules/.bin/babel.cmd
+architect-testing-exercise/03.SoftTerest/node_modules/.bin/babel.ps1
+architect-testing-exercise/03.SoftTerest/node_modules/babel/.npmignore
+architect-testing-exercise/03.SoftTerest/node_modules/babel/index.js
+architect-testing-exercise/03.SoftTerest/node_modules/babel/lib/cli.js
+architect-testing-exercise/03.SoftTerest/node_modules/babel/package.json

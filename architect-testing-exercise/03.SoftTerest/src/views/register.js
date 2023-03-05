@@ -21,6 +21,7 @@ async function onSubmit(event){
         alert("password does not match");
     } else {
         await register(email, password);
+        ctx.updateNavigate();
         ctx.goTo("/");
     }
 }

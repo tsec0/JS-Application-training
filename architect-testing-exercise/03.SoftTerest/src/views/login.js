@@ -18,5 +18,6 @@ async function onSubmit(event){
     const { email, password } = Object.fromEntries(formData);
     
     await login(email, password);
-    ctx.goTo("/");
+    ctx.updateNavigate();
+    ctx.goTo("/catalog");
 }

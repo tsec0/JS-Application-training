@@ -32,7 +32,8 @@ const root = document.querySelector("main");
 update();
 
 function onClick(id) {
-  const item = data.find(i => i.id == id);
+  const index = data.findIndex(i => i.id == id);
+  data.splice(index, 1);
   update();
 }
 

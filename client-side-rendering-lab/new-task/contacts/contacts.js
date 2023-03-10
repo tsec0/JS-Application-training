@@ -9,7 +9,7 @@ export const contacts = [
         id: 2,
         name: 'Merrie',
         phoneNumber: '0845996111',
-        email: 'merrie@merrie.com'
+        email: 'merrie@merrie.com',
     },
     {
         id: 3,

@@ -1,17 +1,20 @@
 import page from '../node_modules/page/page.mjs';
-
-const views = {
-    'homePage': () => console.log('<h2>Home Page</h2>'),
-    'catalogPage': () => console.log('<h2>Catalog Page</h2>'),
-    'aboutPage': () => console.log('<h2>About Page</h2>'),
-}
+import { showAbout } from './views/about.js';
+import { showCatalog } from './views/catalog.js';
+import { showContact } from './views/contact.js';
+import { showHome } from './views/home.js';
+import { notFound } from './views/notfound.js';
 
 page('/index.html', '/');
 
-page('/', views['homePage']);
+page('/', showHome);
 
-page('/catalog', views['catalogPage']);
+page('/catalog', showCatalog);
 
-page('/about', views['aboutPage']);
+page('/about', showAbout);
+
+page('/contact', showContact);
+
+page('*', notFound);
 
 page.start();

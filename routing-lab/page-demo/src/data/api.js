@@ -1,4 +1,4 @@
-const host = 'http://localhost:3030';
+const host = 'http://localhost:3030/';
 
 async function request(method, url, data){
     const options = {
@@ -27,7 +27,7 @@ async function request(method, url, data){
         return data;
 
     } catch(error){
-        alert(err.message);
+        alert(error.message);
         throw error;
     }
 }

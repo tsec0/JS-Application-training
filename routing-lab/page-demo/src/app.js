@@ -1,4 +1,4 @@
-import page from '../node_modules/page/page.mjs';
+import { page } from './lib.js'
 import { render } from '../node_modules/lit-html/lit-html.js';
 
 import { showAbout } from './views/about.js';
@@ -35,9 +35,9 @@ page('/index.html', '/');
 // page('/', firstHandler, secondHandler, showHome); // Dependancy injextion - no spagetti; View Handler
 page('/', showHome);
 page('/contact', showContact);
-page('/catalog', showCatalog);
+page('/recipes', showCatalog);
 page('/create', showCreate);
-page('/catalog/:productId', showDetails); // /catalog/....
+page('/recipes/:id', showDetails); // /catalog/....
 page('/about', showAbout);
 page('*', notFound);
 

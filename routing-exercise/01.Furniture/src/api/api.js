@@ -4,11 +4,16 @@ async function request(url, options){
     try {
         const response = await fetch(host + url, options);
         if(!response.ok){
-            const error = await response.json();
-            throw  new Error(error.message);
+            const err = await response.json();
+            throw new Error(err.message);
         }
         try {
-            const data = response.json();
+
+            if(response.status === 204){
+                return response;
+            }
+
+            const data = await response.json();
             return data;
         } catch(error){
             alert(error.message);
@@ -26,10 +31,10 @@ function getOption(method, body){
         headers: {},
     }
 
-    const user = JSON.parse(localStorage.getItem("userData"));
+    const user = JSON.parse(sessionStorage.getItem("userData"));
 
     if (user) {
-        const token = user.token;
+        const token = user.accessToken;
         options.headers["X-Authorization"] = token;
     }
 
@@ -42,7 +47,7 @@ function getOption(method, body){
 }
 
 export async function get(url){
-    return await request("get", getOption("GET"));
+    return await request(url, getOption("GET"));
 }
 
 export async function post(url, data){

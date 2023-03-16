@@ -3,7 +3,7 @@ const host = 'http://localhost:3030/';
 async function request(url, options){
     try {
         const response = await fetch(host + url, options);
-        if(!response){
+        if(!response.ok){
             const error = await response.json();
             throw  new Error(error.message);
         }
@@ -27,9 +27,9 @@ function getOption(method, body){
     }
 
     const user = JSON.parse(localStorage.getItem("userData"));
-    const token = user.token;
 
-    if (token) {
+    if (user) {
+        const token = user.token;
         options.headers["X-Authorization"] = token;
     }
 

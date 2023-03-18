@@ -1,5 +1,6 @@
 import { html } from "../../node_modules/lit-html/lit-html.js";
 import { getAllItem } from "../api/data.js";
+import { getItemTemp } from "./common/myItems.js";
 
 export async function catalogView(context) {
   //debugger
@@ -18,27 +19,28 @@ function catalogTemp(data) {
         </div>
       </div>
       <div class="row space-top">
-        ${Object.values(data).map((item) => createItem(item))}
+        ${Object.values(data).map((item) => getItemTemp(item))}
       </div>
     </div>
   `;
 }
 
-function createItem(itemDetails) {
-// debugger
-  return html` <div class="col-md-4">   
-    <div class="card text-white bg-primary">
-      <div class="card-body">
-        <img src=01.Furniture/${itemDetails.img} />
-        <p>${itemDetails.description}</p>
-        <footer>
-          <p>Price: <span>${itemDetails.price} $</span></p>
-        </footer>
-        <div>
-          <a href="/details/${itemDetails._id}" class="btn btn-info"> Details </a>
-        </div>
-      </div>
-    </div>
-  </div>
-  `;
-}
+/*Object.values(data).map((item) => createItem(item))*/
+// function createItem(itemDetails) {
+//   debugger
+//   return html` <div class="col-md-4">   
+//     <div class="card text-white bg-primary">
+//       <div class="card-body">
+//         <img src=01.Furniture/${itemDetails.img} />
+//         <p>${itemDetails.description}</p>
+//         <footer>
+//           <p>Price: <span>${itemDetails.price} $</span></p>
+//         </footer>
+//         <div>
+//           <a href="/details/${itemDetails._id}" class="btn btn-info"> Details </a>
+//         </div>
+//       </div>
+//     </div>
+//   </div>
+//   `;
+// }

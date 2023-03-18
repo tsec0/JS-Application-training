@@ -28,7 +28,7 @@ function createProductTemp(handler) {
         <p>Please fill all fields.</p>
       </div>
     </div>
-    <form @click=${handler}>
+    <form @submit=${handler}>
       <div class="row space-top">
         <div class="col-md-4">
           <div class="form-group">

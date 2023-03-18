@@ -11,16 +11,43 @@ export async function createView(context) {
 async function onSubmit(event) {
   event.preventDefault();
   const formData = new FormData(event.target);
-  const { make, model, year, description, price, img, material } =
-    Object.fromEntries(formData);
+  const { make, model, year, description, price, img, material } = Object.fromEntries(formData);
+
+  let hasError = false;
+
+  const isValidForm = {
+      hasMake: "is-valid",
+      hasModel: "is-valid",
+      hasYear: "is-valid",
+      hasDescription: "is-valid",
+      hasPrice: "is-valid",
+      hasImg: "is-valid",
+  }
 
   //validation
+  if (!make || make.length < 4){
+    isValidForm.hasMake = "is-invalid";
+    hasError = true;
+  }
+  if (!model || model.length <4){
+    isValidForm.hasModel = "is-invalid";
+    hasError = true;
+  }
+  const yearNum = Number(year);
+  if (!yearNum || yearNum < 1950 || yearNum > 2025){
+    isValidForm.hasYear = "is-invalid";
+    hasError = true;
+  }
+
+  if (hasError){
+    return contex.render(createProductTemp(onSubmit, isValidForm));
+  }
 
   await createItem({ make, model, year, description, price, img, material });
   contex.page.redirect("/");
 }
 
-function createProductTemp(handler) {
+function createProductTemp(handler, stateForm = {}) {
   return html`
     <div class="row space-top">
       <div class="col-md-12">
@@ -34,7 +61,7 @@ function createProductTemp(handler) {
           <div class="form-group">
             <label class="form-control-label" for="new-make">Make</label>
             <input
-              class="form-control valid"
+              class="form-control ${stateForm.hasMake}"
               id="new-make"
               type="text"
               name="make"
@@ -43,7 +70,7 @@ function createProductTemp(handler) {
           <div class="form-group has-success">
             <label class="form-control-label" for="new-model">Model</label>
             <input
-              class="form-control is-valid"
+              class="form-control ${stateForm.hasModel}"
               id="new-model"
               type="text"
               name="model"
@@ -52,7 +79,7 @@ function createProductTemp(handler) {
           <div class="form-group has-danger">
             <label class="form-control-label" for="new-year">Year</label>
             <input
-              class="form-control is-invalid"
+              class="form-control ${stateForm.hasYear}"
               id="new-year"
               type="number"
               name="year"

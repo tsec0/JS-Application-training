@@ -28,7 +28,7 @@ export async function logout (){
     return result; // for any reason to be used
 }
 
-// Create Furniture Details (POST)
+// Create Furniture (POST)
 export async function createItem(data){
     const result = await api.post(endpoint.createItem, data);
     return result; // for any reason to be used
@@ -47,8 +47,8 @@ export async function getItemById(id){
 }
 
 //Update Furniture (PUT)
-export async function updateItemById(id){
-    const result = await api.post(endpoint.getItemById + id, data);
+export async function updateItemById(id, data){
+    const result = await api.put(endpoint.getItemById + id, data);
     return result; // for any reason to be used
 }
 

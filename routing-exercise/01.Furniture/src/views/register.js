@@ -3,7 +3,7 @@ import { register } from "../api/data.js";
 
 let contex = null;
 export async function registerView(context){
-    // console.log("RegisterView");
+    console.log("RegisterView");
     contex = context;
     context.render(createRegisterTemp(onSubmit));
 }

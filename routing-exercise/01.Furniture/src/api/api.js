@@ -8,11 +8,12 @@ async function request(url, options){
             throw new Error(err.message);
         }
         try {
-
+            // response handler
             if(response.status === 204){
                 return response;
             }
 
+            // after all responses are OK!
             const data = await response.json();
             return data;
         } catch(error){

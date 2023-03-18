@@ -5,10 +5,10 @@ export async function detailsView(context) {
     const id = context.params.id;
     const item = await getItemById(id);
     const userData = JSON.parse(sessionStorage.getItem("userData"));
-    context.render(detailsTemp(item, userData));
+    context.render(detailsTemp(item, userData._id === item._ownerId));
 }
 
-function detailsTemp(item) {
+function detailsTemp(item, isOwner) {
     const itemImgPath = item.img.split("/");
   return html`
     <div class="row space-top">
@@ -31,11 +31,13 @@ function detailsTemp(item) {
         <p>Description: <span>${item.description}</span></p>
         <p>Price: <span>${item.price}</span></p>
         <p>Material: <span>${item.material}</span></p>
-        <div>
-          <a href="”#”" class="btn btn-info">Edit</a>
-          <a href="”#”" class="btn btn-red">Delete</a>
-        </div>
+        ${ isOwner ? 
+          html`
+          <div>
+            <a href="”#”" class="btn btn-info">Edit</a>
+            <a href="”#”" class="btn btn-red">Delete</a>
+          </div>` : ''}
       </div>
     </div>
   `;
-}
+} 

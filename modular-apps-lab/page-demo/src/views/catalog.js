@@ -33,6 +33,7 @@ function composeUrl(page, search){
 
 export async function showCatalog(context) {
   // console.log(context.query);
+  console.log(context.user);
   const page = Number(context.query.page) || 1;
   const search = context.query.search || '';
 

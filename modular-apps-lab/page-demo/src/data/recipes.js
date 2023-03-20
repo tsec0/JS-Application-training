@@ -3,9 +3,9 @@ import { get } from "./api.js";
 const pageSize = 3;
 
 const endpoints = {
-    'recipes': 'data/recipes?sortBy=_createdOn%20desc',
+    'recipes': '/data/recipes?sortBy=_createdOn%20desc',
     // 'recipeCount': 'data/recipes?sortBy=_createdOn%20desc',
-    'byId': 'data/recipes/',
+    'byId': '/data/recipes/',
 };
 
 export async function getAll(page, query){

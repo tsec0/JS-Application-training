@@ -6,7 +6,6 @@ export function createSubmitHandler(callback) {
 
     callback(data, event.target);
   };
-  // form reset
 }
 
 export function setUserData(data){
@@ -35,5 +34,3 @@ export function clearUserData(){
     sessionStorage.removeItem('_id');
     sessionStorage.removeItem('accessToken');
 }
-
-

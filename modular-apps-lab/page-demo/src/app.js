@@ -11,6 +11,7 @@ import { notFound } from "./views/notfound.js";
 import { showLogin } from "./views/login.js";
 import { getUserData } from "./util.js";
 import { showRegister } from "./views/register.js";
+import { logout } from "./data/auth.js";
 
 // next handler -> page guard -> middleware
 //              -> preloader
@@ -27,6 +28,11 @@ const navTemplate = (user) => html`
     <a href="/register">Register</a>
   `}
 `;
+
+function onLogout(context){
+  logout();
+  context.page.redirect('/');
+}
 
 function decorateContext(context, next) {
   render(navTemplate(context.user), document.querySelector('nav'));
@@ -78,7 +84,7 @@ page('/recipes/:id', showDetails); // /catalog/....
 page('/about', showAbout);
 page('/login', showLogin);
 page('/register', showRegister);
-// page('/logout', showLogout);
+page('/logout', onLogout);
 page('*', notFound);
 
 page.start();

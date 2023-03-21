@@ -36,9 +36,6 @@ function onLogout(context){
 
 function decorateContext(context, next) {
   render(navTemplate(context.user), document.querySelector('nav'));
-  // if(context.user){
-
-  // }
 
   context.render = function (content) {
     render(content, document.querySelector("main"));
@@ -48,7 +45,6 @@ function decorateContext(context, next) {
 
 function parseQuery(context, next) {
   context.query = {};
-  // console.log(Object.fromEntries(context.querystring.split("&").map(element => element.split("="))));
   if(context.querystring) {
     const query = Object.fromEntries(context.querystring.split('&').map(element => element.split('=')));
     Object.assign(context.query, query);
@@ -67,8 +63,9 @@ function session(context, next){
 
 }
 
-page(session); 
+
 //MiddleWare
+page(session); 
 page(decorateContext); // always compiles
 page(parseQuery); // always compiles
 

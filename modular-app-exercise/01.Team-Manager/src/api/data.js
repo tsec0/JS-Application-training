@@ -68,7 +68,8 @@ export async function requestMember(teamId){
 }
 
 export async function getOwnerTeamInfo(teamId){
-    const url = endpoint.requestMember + `?where=teamId%3D%22${teamId}%22&load=user%3D_ownerId%3Ausers`;
+    const userId = JSON.parse(sessionStorage.getItem("userData"))._id;
+    const url = endpoint.requestMember + `?where=teamId%3D%22${teamId}%22&load=user%3D${userId}%3Ausers`;
     const result = await api.get(url);
     return result;
 }

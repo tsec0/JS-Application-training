@@ -1,5 +1,5 @@
 import { html } from "../../node_modules/lit-html/lit-html.js";
-import { getTeamsInfo } from "../api/data.js";
+import { getTeamsInfo, getOwnerTeamInfo } from "../api/data.js";
 
 export async function teamDetailsView(context) {
   console.log("teamHomeView");
@@ -13,8 +13,15 @@ export async function teamDetailsView(context) {
   const teamOwnerId = team._ownerId;
   const isOwner = userId == teamOwnerId;
 
+  if (isOwner) {
+    const teamsInfo = await getOwnerTeamInfo();
+  }
+
   context.render(detailsTemp(team, isOwner, userData));
 }
+
+// <a href="#" class="action invert">Leave team</a>
+// Membership pending. <a href="#">Cancel request</a>
 
 function detailsTemp(team, isOwner, user) {
   return html`
@@ -28,10 +35,7 @@ function detailsTemp(team, isOwner, user) {
           <div>
             ${isOwner
               ? html`<a href="/edit/${team._id}" class="action">Edit team</a>`
-              : ""}
-            <a href="#" class="action">Join team</a>
-            <a href="#" class="action invert">Leave team</a>
-            Membership pending. <a href="#">Cancel request</a>
+              : html` <a href="#" class="action">Join team</a>`}
           </div>
         </div>
         <div class="pad-large">
@@ -39,10 +43,20 @@ function detailsTemp(team, isOwner, user) {
           <ul class="tm-members">
             <li>${user.username}</li>
             <li>
-              James ${isOwner ? html`<a href="#" class="tm-control action">Remove from team</a>` : ""}
+              James
+              ${isOwner
+                ? html`<a href="#" class="tm-control action"
+                    >Remove from team</a
+                  >`
+                : ""}
             </li>
             <li>
-              Meowth ${isOwner ? html`<a href="#" class="tm-control action">Remove from team</a>` : ""}
+              Meowth
+              ${isOwner
+                ? html`<a href="#" class="tm-control action"
+                    >Remove from team</a
+                  >`
+                : ""}
             </li>
           </ul>
         </div>
@@ -58,7 +72,8 @@ function detailsTemp(team, isOwner, user) {
                     Preya<a href="#" class="tm-control action">Approve</a
                     ><a href="#" class="tm-control action">Decline</a>
                   </li>
-                </ul>` : ""}
+                </ul>`
+            : ""}
         </div>
       </article>
     </section>

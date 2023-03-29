@@ -1,5 +1,5 @@
 import { html } from "../../node_modules/lit-html/lit-html.js";
-import { createTeam } from "../api/data.js";
+import { createTeam, requestMember } from "../api/data.js";
 
 let contex = null;
 export async function createView(context) {
@@ -14,6 +14,8 @@ async function onSubmit(event){
     const {name, logoUrl, description} = Object.fromEntries(formData);
 
     const response = await createTeam(name, logoUrl, description);
+    const addMember = await requestMember(response._id);
+
     contex.page.redirect(`/details/${response._id}`);
 }
 

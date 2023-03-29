@@ -1,8 +1,10 @@
 import { html } from "../../node_modules/lit-html/lit-html.js";
 import { createTeam } from "../api/data.js";
 
+let contex = null;
 export async function createView(context) {
     console.log("createView");
+    contex = context;
     context.render(createTeamTemp());
 }
 
@@ -11,7 +13,8 @@ async function onSubmit(event){
     const formData = new FormData(event.target);
     const {name, logoUrl, description} = Object.fromEntries(formData);
 
-    await createTeam(name, logoUrl, description);
+    const response = await createTeam(name, logoUrl, description);
+    contex.page.redirect(`/details/${response._id}`);
 }
 
 function createTeamTemp() {

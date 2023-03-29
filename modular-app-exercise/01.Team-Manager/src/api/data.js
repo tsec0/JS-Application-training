@@ -9,6 +9,7 @@ const endpoint = {
     "createTeam": "data/teams",
     "teamsInfo": "data/teams/", 
     "requestMember": "data/members",
+    "getOwnerTeamInfo": "data/members",
 }
 
 export async function login(email, password){
@@ -64,4 +65,10 @@ export async function updateTeamInfo(id, name, imageUrl, description){
 export async function requestMember(teamId){
     const result = await api.post(endpoint.requestMember, {teamId});
     return result; // for any reason to be used
+}
+
+export async function getOwnerTeamInfo(teamId){
+    const url = endpoint.requestMember + `?where=teamId%3D%22${teamId}%22&load=user%3D_ownerId%3Ausers`;
+    const result = await api.get(url);
+    return result;
 }

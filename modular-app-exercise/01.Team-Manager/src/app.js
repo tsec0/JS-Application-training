@@ -11,7 +11,7 @@ import { registerView } from "./view/registerView.js";
 import { myTeamView } from "./view/myTeamView.js";
 import { browseView } from "./view/browseView.js";
 import { loginView } from "./view/loginView.js";
-import { teamHomeView } from "./view/teamHomeView.js";
+import { teamDetailsView } from "./view/teamDetailsView.js";
 
 // root element for adding templates
 const rootElement = document.getElementsByTagName("main")[0];
@@ -23,7 +23,7 @@ page("/register", middleWare, registerView);
 page("/browse", middleWare, browseView);
 page("/edit/:id", middleWare, editView);
 page("/my-team", middleWare, myTeamView);
-page("/team-home", middleWare, teamHomeView);
+page("/details/:id", middleWare, teamDetailsView);
 page("/create", middleWare, createView);
 
 page.start();

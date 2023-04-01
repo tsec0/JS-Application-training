@@ -5,18 +5,25 @@
 // window.request = request;
 
 import page from './lib/page.mjs';
+
+import { addUserNav } from './middlewares/nav.js';
 import { addRender } from './middlewares/render.js';
 import { addSession } from './middlewares/session.js';
+
 import { getUserData } from './util.js';
+
 import { catalogView } from './views/catalog.js';
 import { createView } from './views/create.js';
 import { loginView } from './views/login.js';
+import { navTempalte } from './views/nav.js';
 import { registerView } from './views/register.js';
 
-const root = document.querySelector('main')
+const rootm = document.querySelector('main');
+const rooth =  document.querySelector('header');
 
-page(addRender(root));
+page(addRender(rootm, rooth));
 page(addSession(getUserData));
+page(addUserNav(navTempalte));
 
 page('/', '/create');
 page('/rooms', catalogView);

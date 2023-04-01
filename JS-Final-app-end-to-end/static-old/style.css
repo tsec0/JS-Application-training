@@ -1,0 +1,52 @@
+.night {
+    background-color: #000b29;
+    color: white;
+}
+
+.red {
+    background-color: #d70026;
+}
+
+.pearl {
+    background-color: #f8f5f2;
+}
+
+.flash {
+    background-color: #edb83d;
+}
+
+body {
+    width: auto;
+    background-color: #dddddd;
+}
+
+h1, h2, h3 {
+    color: #000b29;
+    font-size: 24px;
+}
+
+a {
+    color: #000b29;
+}
+
+a:hover {
+    color: #edb83d;
+}
+
+.invert {
+    color: #f8f5f2;
+}
+
+header {
+    background-color: white;
+}
+
+.room-card {
+    float: left;
+    width: 300px;
+    border-radius: 16px;
+    box-shadow: 8px 8px 8px 8px rgba(0, 0, 0, 0.2);
+    margin: 32px;
+    padding: 16px 32px;
+    background-color: rgb(51, 69, 69);
+}

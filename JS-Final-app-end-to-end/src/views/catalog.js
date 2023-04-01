@@ -24,7 +24,7 @@ const roomCard = (room) => html`
 `;
 
 export async function catalogView(context){
-    context.render(html`<p>Loading &hellip;</p>`);
+    context.render(catalogTemplate(html`<p>Loading &hellip;</p>`));
 
     const { results: rooms } = await roomService.getAll();
 

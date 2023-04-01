@@ -6,7 +6,7 @@ export const navTempalte = (hasUser) => html`
         <a href="/">Home</a>
         <a href="/rooms">Rooms</a>
         ${hasUser ? 
-            html`<a href="/create">Create</a>
+            html`<a href="/host">Host</a>
             <a href="javascript:void(0)">Logout</a>` 
             : 
             html`<a href="/login">Login</a>

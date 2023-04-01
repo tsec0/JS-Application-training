@@ -14,6 +14,7 @@ import { getUserData } from './util.js';
 
 import { catalogView } from './views/catalog.js';
 import { createView } from './views/create.js';
+import { homeView } from './views/home.js';
 import { loginView } from './views/login.js';
 import { navTempalte } from './views/nav.js';
 import { registerView } from './views/register.js';
@@ -25,10 +26,10 @@ page(addRender(rootm, rooth));
 page(addSession(getUserData));
 page(addUserNav(navTempalte));
 
-page('/', '/create');
+page('/', homeView);
 page('/rooms', catalogView);
 page('/rooms/:id', ({params: { id } }) => console.log('details', id));
-page('/create', createView);
+page('/host', createView);
 page('/login', loginView);
 page('/register', registerView);
 

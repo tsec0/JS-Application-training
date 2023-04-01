@@ -1,6 +1,6 @@
 body {
     width: auto;
-    background-color: rgb(255, 113, 113);
+    background-color: rgb(240, 208, 133);
 }
 
 .room-card {
@@ -10,5 +10,9 @@ body {
     box-shadow: 8px 8px 8px 8px rgba(0, 0, 0, 0.2);
     margin: 32px;
     padding: 16px 32px;
-    background-color: blueviolet;
+    background-color: ivory;
+}
+
+label {
+    display: block;
 }

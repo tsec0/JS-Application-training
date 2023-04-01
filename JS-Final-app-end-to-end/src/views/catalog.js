@@ -4,7 +4,7 @@ import { repeat } from '../lib/directives/repeat.js';
 import * as roomService from '../data/room.js';
 
 const catalogTemplate = (list) => html`
-    <h1>Available Rooms</h1>
+    <h2>Available Rooms</h2>
     ${list}
 `;
 

@@ -28,3 +28,8 @@ export async function login(email, password){
 
     setUserData(userData);
 }
+
+export async function logout(){
+    // const result = get('/logout');
+    clearUserData();
+}

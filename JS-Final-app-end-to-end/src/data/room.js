@@ -1,14 +1,16 @@
 import { get, post, put, del } from "./api.js";
-import { addOwner, createPointer } from "../util.js";
+import { addOwner, encodeObject, filterRelation } from "../util.js";
 
 const endpoints = {
-    'rooms': `/classes/Room?where=${encodeURIComponent(`{"openForBooking": true}`)}`,
-    'roomsWithUser': (userId) =>  `/classes/Room?where=${encodeURIComponent(
-        `{"$or":[
-            {"openForBooking": true}, 
-            {"owner": ${JSON.stringify(createPointer('_User', userId))}}
-            ]}`
-        )}`,
+    'rooms': `/classes/Room?where=${
+        encodeObject({openForBooking: true})
+    }&include=owner`,
+    'roomsWithUser': (userId) =>  `/classes/Room?where=${
+        encodeObject({$or:[
+            {openForBooking: true},
+            filterRelation('owner', '_User', userId)
+        ]})
+    }&include=owner`,
     'roomById': '/classes/Room/',
 };
 

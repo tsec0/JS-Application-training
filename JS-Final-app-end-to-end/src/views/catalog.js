@@ -22,6 +22,7 @@ const roomCard = (room) => html`
         <p>Location: ${room.location}</p>
         <p>Beds: ${room.beds}</p>
         <p>Free: ${room.openForBooking}</p>
+        <p>Hosted by ${room.owner.username}</p>
         <p><a class="action" href="/rooms/${room.objectId}">View Details</a></p>
     </article>
 `;

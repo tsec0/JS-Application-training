@@ -16,3 +16,7 @@ body {
 label {
     display: block;
 }
+
+.own-room{
+    background-color: rgb(94, 130, 197);
+}

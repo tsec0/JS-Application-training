@@ -1,13 +1,23 @@
 import { get, post, put, del } from "./api.js";
-import { addOwner } from "../util.js";
+import { addOwner, createPointer } from "../util.js";
 
 const endpoints = {
-    'rooms': '/classes/Room',
+    'rooms': `/classes/Room?where=${encodeURIComponent(`{"openForBooking": true}`)}`,
+    'roomsWithUser': (userId) =>  `/classes/Room?where=${encodeURIComponent(
+        `{"$or":[
+            {"openForBooking": true}, 
+            {"owner": ${JSON.stringify(createPointer('_User', userId))}}
+            ]}`
+        )}`,
     'roomById': '/classes/Room/',
 };
 
-export async function getAll(){
-    return get(endpoints.rooms);
+export async function getAll(userId){
+    if (userId) {
+        return get(endpoints.roomsWithUser(userId));
+    } else {
+        return get(endpoints.rooms);
+    }
 }
 
 export async function getById(id){

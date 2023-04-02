@@ -25,7 +25,7 @@ export function createView(context){
             return alert('All fields are required');
         }
 
-        const userId = context.user.objectId;
+        const userId = context.user?.objectId;
 
         const result = await roomService.create({name, location, beds}, userId);
 

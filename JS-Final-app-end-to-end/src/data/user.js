@@ -1,4 +1,4 @@
-import { setUserData } from "../util.js";
+import { removeUserData, setUserData } from "../util.js";
 import { post } from "./api.js";
 
 
@@ -30,6 +30,5 @@ export async function login(email, password){
 }
 
 export async function logout(){
-    // const result = get('/logout');
-    clearUserData();
+    removeUserData();
 }
